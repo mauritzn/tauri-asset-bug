@@ -66,6 +66,10 @@ button:hover {
   border-color: #396cd8;
 }
 
+button em {
+  opacity: 0.5;
+}
+
 input,
 button {
   outline: none;
