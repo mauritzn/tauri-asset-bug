@@ -44,6 +44,12 @@ Yes, I have tried using the [streaming example](https://github.com/tauri-apps/ta
 
 ---
 
+## Crash demo
+
+https://user-images.githubusercontent.com/11979966/221927700-639521ee-8c3a-43d9-930f-cfd454aaa920.mp4
+
+---
+
 ## Web DevTools, Network tab
 
 ### Rocket _(using rocket_seek_stream)_
