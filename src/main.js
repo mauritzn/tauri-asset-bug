@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
         })
           .then((selected) => {
             if (typeof selected === "string") {
-              const assetPath = convertFileSrc(selected);
+              const assetPath = convertFileSrc(selected, "stream");
 
               let videoElement = document.createElement("video");
               videoElement.setAttribute("controls", "");
