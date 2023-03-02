@@ -28,7 +28,10 @@
       "protocol": {
         "all": false,
         "asset": true,
-        "assetScope": []
+        "assetScope": [
+          "**\\tauri-asset-bug\\test_video\\*",
+          "**/tauri-asset-bug/test_video/*"
+        ]
       }
     },
     "bundle": {
