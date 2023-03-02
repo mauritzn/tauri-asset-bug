@@ -2,6 +2,28 @@
 
 > A small repo meant to show the bug in Tauri's asset video streamer.
 
+## Branch information
+
+> This branch was created to demonstrate the problem with streaming subtitle files.
+
+I have included a 1 minute long video [_(source video)_](https://www.youtube.com/watch?v=0m4hlWx7oRk) with a corresponding subtitle file. When the application is launched the video and subtitle file should load into a video player and be displayed on the page. If this doesn't occur there is an previous commit that uses `dialog.open` rather than auto-loading.
+
+One thing to note is that subtitle files are much more restrictive when it comes to CORS, example CORS errors and what cause them:
+
+```
+Unsafe attempt to load URL https://stream.localhost/<SUBTITLE_FILE>.vtt from frame with URL http://127.0.0.1:1430/. Domains, protocols and ports must match.
+```
+
+> Caused due to subtitle file getting loaded from a different domain, protocol or port than the page _(e.g. page is loaded from `http://127.0.0.1:1430/`, while subtitle is loaded from `https://stream.localhost`)_. Solved by using `crossorigin="anonymous"` on video element.
+
+```
+Access to text track at 'https://stream.localhost/<SUBTITLE_FILE>.vtt' from origin 'http://127.0.0.1:1430' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
+
+> Response header `Access-Control-Allow-Origin` is required when `crossorigin="anonymous"` is used on video element. Solved by sending `Access-Control-Allow-Origin`.
+
+---
+
 ## The issue
 
 When seeking into longer/larger videos using Tauri's asset protocol, the video will hang and eventually crash the app entirely.
