@@ -6,7 +6,10 @@
 use std::io::{Read, Seek, SeekFrom, Write};
 
 use tauri::http::{
-    header::{ACCEPT_RANGES, CONTENT_LENGTH, CONTENT_RANGE, CONTENT_TYPE, RANGE},
+    header::{
+        ACCEPT_RANGES, ACCESS_CONTROL_ALLOW_ORIGIN, CONTENT_LENGTH, CONTENT_RANGE, CONTENT_TYPE,
+        RANGE,
+    },
     status::StatusCode,
     MimeType, ResponseBuilder,
 };
@@ -46,6 +49,7 @@ fn main() {
             file.seek(SeekFrom::Start(0))?;
 
             let mut resp = ResponseBuilder::new().header(CONTENT_TYPE, &mime_type);
+            resp = resp.header(ACCESS_CONTROL_ALLOW_ORIGIN, "*"); // INFO: added to support: crossorigin="anonymous", on video element
 
             let response = if let Some(x) = request.headers().get(RANGE) {
                 let not_satisfiable = || {
