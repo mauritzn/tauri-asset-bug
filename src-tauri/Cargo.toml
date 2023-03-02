@@ -16,7 +16,7 @@ tauri-build = { version = "1.2", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.2", features = ["devtools", "dialog-open", "protocol-asset", "shell-open"] }
+tauri = { version = "1.2", features = ["devtools", "dialog-open", "path-all", "protocol-asset", "shell-open"] }
 percent-encoding = "2.2.0"
 url = "2.3.1"
 http-range-header = "0.3.0"
